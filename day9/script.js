@@ -1,18 +1,18 @@
 const products = [
   {
-    image: "1.jpeg",
+    image: "1.jpg",
     name: " elegant floral gowm",
     description: "a beautiful floral gowm without sleeves.",
     price: "₹500,000",
   },
   {
-    image: "2.jpeg",
+    image: "2.jpg",
     name: "brown short dress",
     description: "A stylish brown short dress perfect for any occasion.",
     price: "₹25,000",
   },
   {
-    image: "3.jpeg",
+    image: "3.jpg",
     name: "blue puff sleeves gown",
     description: "Elegant blue puff sleeves gown with a delicate design.",
     price: "₹3,000",
