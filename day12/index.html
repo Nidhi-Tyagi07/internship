@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-
+    <title>web</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,16 +24,21 @@
             <li><a href="#">About us</a></li>
         </ul>
 
-        <button class="login-btn">Login</button>
+        <div class="nav-actions">
 
+    <div class="cart-icon" onclick="openCart()">
+        🛒
+        <span id="cart-count">0</span>
+    </div>
+
+    <button class="login-btn">Login</button>
+
+</div>
+         
     </nav>
 
 </div>
-<span onclick="openCart()">
 
-  🛒 <span id="cart-count">0</span>
-
-</span>  
 <section class="hero">
 
     <!-- Background Video -->
@@ -91,10 +96,9 @@
                     <span>(50 Reviews)</span>
                 </div>
 
-                <button>
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    ADD TO CART
-                </button>
+                 <button onclick="addToCart('One-Shoulder Black Gown','d5.jpeg')">
+🛍 ADD TO CART
+</button>
             </div>
         </div>
 
@@ -113,10 +117,9 @@
                     <span>(101 Reviews)</span>
                 </div>
 
-                <button>
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    ADD TO CART
-                </button>
+                 <button onclick="addToCart('Dusty Pink Formal Dresses','d1.jpg')">
+🛍 ADD TO CART
+</button>
             </div>
         </div>
 
@@ -135,10 +138,9 @@
                     <span>(189 Reviews)</span>
                 </div>
 
-                <button>
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    ADD TO CART
-                </button>
+                 <button onclick="addToCart('Elegant Maroon Evening Gown','d4.jpeg')">
+🛍 ADD TO CART
+</button>
             </div>
         </div>
 
@@ -155,11 +157,10 @@
                     ★★★★☆
                     <span>(189 Reviews)</span>
                 </div>
-
-                <button>
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    ADD TO CART
-                </button>
+                     <button onclick="addToCart('Elegant off shoulder maroondress','d2.jpeg')">
+🛍 ADD TO CART
+</button>
+               
             </div>
         </div>
 
@@ -177,10 +178,9 @@
                     <span>(189 Reviews)</span>
                 </div>
 
-                <button>
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    ADD TO CART
-                </button>
+               <button onclick="addToCart('Elegant Soft Colour Wedding Gown','d3.jpeg')">
+🛍 ADD TO CART
+</button>
             </div>
         </div>
 
@@ -321,5 +321,142 @@
 
 
 
+
+<div class="cart-box" id="cart-box">
+
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <span onclick="closeCart()">✖</span>
+    </div>
+
+    <div id="cart-items"></div>
+
+</div>
+
+<script>
+
+let cart = [];
+
+
+function addToCart(name,image){
+
+    let item = cart.find(product => product.name === name);
+
+
+    if(item){
+        item.quantity++;
+    }
+    else{
+        cart.push({
+            name:name,
+            image:image,
+            quantity:1
+        });
+    }
+
+
+    updateCart();
+
+}
+
+
+
+function updateCart(){
+
+    let cartItems = document.getElementById("cart-items");
+
+    cartItems.innerHTML="";
+
+
+    cart.forEach((item,index)=>{
+
+
+        cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+            <img src="${item.image}">
+
+            <div>
+
+            <h4>${item.name}</h4>
+
+
+            <button onclick="changeQty(${index},-1)">-</button>
+
+            ${item.quantity}
+
+            <button onclick="changeQty(${index},1)">+</button>
+
+
+            <p class="remove" onclick="removeItem(${index})">
+            Remove
+            </p>
+
+
+            </div>
+
+        </div>
+
+        `;
+
+
+    });
+
+
+    // navbar cart count
+    document.getElementById("cart-count").innerText =
+    cart.reduce((sum,item)=>sum + item.quantity,0);
+
+}
+
+
+
+
+function changeQty(index,value){
+
+    cart[index].quantity += value;
+
+
+    if(cart[index].quantity <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+
+
+function openCart(){
+
+    document.getElementById("cart-box")
+    .classList.add("active");
+
+}
+
+
+
+function closeCart(){
+
+    document.getElementById("cart-box")
+    .classList.remove("active");
+
+}
+</script>
 </body>
 </html>
