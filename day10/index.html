@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+           *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#faf8f6;
+}
+
+
+/* Main Card */
+body > div{
+
+    width:380px;
+    padding:45px 35px;
+    text-align:center;
+
+    background:#ffffff;
+    border-radius:25px;
+
+    box-shadow:0 15px 35px rgba(184,138,68,0.18);
+
+    border:1px solid #f3e5d0;
+}
+
+
+/* Heading */
+h1{
+
+    font-size:34px;
+    color:#b88a44;
+    margin-bottom:35px;
+
+    letter-spacing:1px;
+}
+
+
+/* Counter Number */
+#counterValue{
+
+    display:inline-block;
+
+    font-size:50px;
+    font-weight:600;
+
+    color:#d46a6a;
+
+    margin:0 25px;
+
+    min-width:70px;
+}
+
+
+/* Plus Minus Buttons */
+button{
+
+    border:none;
+    cursor:pointer;
+
+    font-size:28px;
+    font-weight:600;
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    transition:0.3s;
+}
+
+
+/* + and - */
+#increase,
+#decrease{
+
+    background:linear-gradient(135deg,#fcccd1,#ffa0c5);
+
+    color:white;
+
+    box-shadow:0 5px 15px rgba(212,106,106,0.25);
+}
+
+
+#increase:hover,
+#decrease:hover{
+
+    transform:translateY(-5px);
+
+    background:#d46a6a;
+}
+
+
+/* Restart Button */
+#restart{
+
+    margin-top:35px;
+
+    width:160px;
+    height:45px;
+
+    border-radius:25px;
+
+    font-size:17px;
+
+    color:white;
+
+    background:#b88a44;
+
+    box-shadow:0 8px 20px rgba(184,138,68,0.25);
+}
+
+
+#restart:hover{
+
+    background:#967035;
+
+    transform:scale(1.05);
+}
+
+
+/* Small Gold Line Decoration */
+h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:70px;
+    height:3px;
+
+    background:#b88a44;
+
+    margin:12px auto 0;
+
+    border-radius:10px;
+}
+
+
+/* Mobile Responsive */
+@media(max-width:480px){
+
+    body > div{
+
+        width:90%;
+        padding:35px 20px;
+
+    }
+
+
+    h1{
+
+        font-size:28px;
+
+    }
+
+
+    #counterValue{
+
+        font-size:42px;
+
+        margin:0 15px;
+
+    }
+
+
+    button{
+
+        width:50px;
+        height:50px;
+
+    }
+
+
+    #restart{
+
+        width:140px;
+
+    }
+
+}
+      </style>
+   </head>
+   <body>
+      <div>
+         <h1>Counter App</h1>
+         <button id="decrease">-</button>
+         <span id="counterValue">0</span>
+         <button id="increase">+</button>
+         <div>
+            <button id="restart">Restart</button>
+         </div>
+      </div>
+      <script>
+         let counterTag = document.querySelector("#counterValue");
+         let counterValue = localStorage.getItem("counterValue");
+         const increaseBtn = document.querySelector("#increase");
+         const decreaseBtn = document.querySelector("#decrease");
+         const restartBtn = document.querySelector("#restart");
+
+         counterTag.innerHTML = counterValue;
+
+         increaseBtn.addEventListener("click", () => {
+            counterValue++;
+            console.log(counterValue);
+            counterTag.innerHTML = counterValue;
+            localStorage.setItem("counterValue", counterValue);
+         });
+
+         decreaseBtn.addEventListener("click", () => {
+            if (counterValue > 0) {
+               counterValue--;
+            }
+            console.log(counterValue);
+            counterTag.innerHTML = counterValue;
+            localStorage.setItem("counterValue", counterValue);
+         });
+
+         restartBtn.addEventListener("click", () => {
+            counterValue = 0;
+            counterTag.innerHTML = counterValue;
+            localStorage.setItem("counterValue", counterValue);
+         });
+
+         // counterValue.innerHTML = 8
+
+         localStorage.setItem("name", "Kanak");
+      </script>
+   </body>
+</html>

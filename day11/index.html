@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+body{
+
+    background:#faf8f6;
+    padding:40px;
+
+    color:#2c2c2c;
+
+}
+
+
+/* Main Container */
+
+body > div{
+
+    max-width:1000px;
+    margin:auto;
+
+}
+
+
+/* Header */
+
+.header{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:white;
+
+    padding:15px 30px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(184,138,68,0.15);
+
+    margin-bottom:30px;
+
+}
+
+
+.header img{
+
+    height:80px;
+
+    object-fit:contain;
+
+}
+
+
+.header span{
+
+    color:#b88a44;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+}
+
+
+.header span:hover{
+
+    color:#d46a6a;
+
+}
+
+
+/* Shopping Cart Box */
+
+.shoppingList{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+}
+
+
+/* Cart Header */
+
+.listHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:20px;
+
+    border-bottom:1px solid #f1dfc5;
+
+}
+
+
+.listHeader h3{
+
+    color:#b88a44;
+
+    font-size:26px;
+
+}
+
+
+.itemsCount{
+
+    color:#d46a6a;
+
+    font-weight:500;
+
+}
+
+
+
+/* Product Card */
+
+.item{
+
+    display:flex;
+
+    gap:30px;
+
+    padding:25px 0;
+
+}
+
+
+
+/* Product Image */
+
+.productImg{
+
+    width:200px;
+
+    height:200px;
+
+    background:#fdf8f3;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+
+.productImg img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+
+
+/* Details */
+
+.productDetailsDiv{
+
+    flex:1;
+
+}
+
+
+.productDetailsDiv h3{
+
+    font-size:22px;
+
+    color:#333;
+
+    margin-bottom:15px;
+
+}
+
+
+.productDetails{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+
+.productPrice{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    color:#b88a44;
+
+}
+
+
+
+/* Quantity */
+
+.editProductQty{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+.changeQty{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+
+.decrease,
+.increase{
+
+    width:35px;
+
+    height:35px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#fcccd1,#ffa0c5);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+}
+
+
+.decrease img,
+.increase img{
+    width:15px;
+    height:15px;
+}
+
+
+
+
+.productQty{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:#b88a44;
+
+}
+
+
+
+/* Remove Button */
+
+.removeBtn{
+
+    border:none;
+
+    background:#d46a6a;
+
+    color:white;
+
+    padding:10px 25px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+}
+
+
+.removeBtn:hover{
+
+    background:#b88a44;
+
+}
+
+
+
+/* Offer Box */
+
+.offer{
+
+    margin-top:25px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:linear-gradient(90deg,#fcccd1,#ffa0c5);
+
+    color:white;
+
+    text-align:center;
+
+    font-weight:500;
+
+}
+
+
+
+/* Mobile Responsive */
+
+@media(max-width:700px){
+
+    body{
+
+        padding:20px;
+
+    }
+
+
+    .header{
+
+        padding:15px;
+
+    }
+
+
+    .header img{
+
+        height:60px;
+
+    }
+
+
+    .item{
+
+        flex-direction:column;
+
+    }
+
+
+    .productImg{
+
+        width:100%;
+
+        height:280px;
+
+    }
+
+
+    .productDetails{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+
+    .editProductQty{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        align-items:flex-start;
+
+    }
+    @media(max-width:700px){
+
+.header span{
+    font-size:14px;
+ }
+
+ }
+
+}
+    </style>
+</head>
+
+<body>
+
+<div>
+
+    <div class="header">
+        <img src="v.jpeg" alt="Logo" />
+        <span>Continue Shopping</span>
+    </div>
+
+    <div class="shoppingList">
+
+        <div class="listHeader">
+            <h3>Shopping Cart</h3>
+            <span class="itemsCount">1 items</span>
+        </div>
+
+        <div class="cartDiv">
+
+            <!-- Demo Item 1 -->
+
+            <div class="item">
+
+                <div class="productImg">
+                    <img src="d4.jpeg" alt="" />
+                </div>
+
+                <div class="productDetailsDiv">
+
+                    <h3>Off Shoulder Maroon Dress</h3>
+
+                    <div class="productDetails">
+                       
+                        <span class="productPrice">₹7000</span>
+                    </div>
+
+                    <div class="editProductQty">
+
+                        <div class="changeQty">
+
+                            <div class="decrease">
+                                <img src="3.jpeg" alt="minus">
+                            </div>
+
+                            <span class="productQty">3</span>
+
+                            <div class="increase">
+                                <img src="2.jpeg" alt="plus">
+                            </div>
+
+                        </div>
+
+                        <div class="remove">
+                            <button class="removeBtn">
+                                Remove
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+             <div class="item">
+
+                <div class="productImg">
+                    <img src="d3.jpeg" alt="" />
+                </div>
+
+                <div class="productDetailsDiv">
+
+                    <h3>Elegant Soft colour Gown</h3>
+
+                    <div class="productDetails">
+                       
+                        <span class="productPrice">₹50000</span>
+                    </div>
+
+                    <div class="editProductQty">
+
+                        <div class="changeQty">
+
+                            <div class="decrease">
+                                <img src="3.jpeg" alt="minus">
+                            </div>
+
+                            <span class="productQty">1</span>
+
+                            <div class="increase">
+                                <img src="2.jpeg" alt="plus">
+                            </div>
+
+                        </div>
+
+                        <div class="remove">
+                            <button class="removeBtn">
+                                Remove
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="item">
+
+                <div class="productImg">
+                    <img src="d1.jpg" alt="" />
+                </div>
+
+                <div class="productDetailsDiv">
+
+                    <h3>soft pink Bodycon Dress</h3>
+
+                    <div class="productDetails">
+                       
+                        <span class="productPrice">₹5000</span>
+                    </div>
+
+                    <div class="editProductQty">
+
+                        <div class="changeQty">
+
+                            <div class="decrease">
+                                <img src="3.jpeg" alt="minus">
+                            </div>
+
+                            <span class="productQty">2</span>
+
+                            <div class="increase">
+                                <img src="2.jpeg" alt="plus">
+                            </div>
+
+                        </div>
+
+                        <div class="remove">
+                            <button class="removeBtn">
+                                Remove
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="offer">
+            <span> Get free shipping on orders over ₹5000</span>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const decreaseButtons = document.querySelectorAll(".decrease");
+const increaseButtons = document.querySelectorAll(".increase");
+const removeButtons = document.querySelectorAll(".removeBtn");
+
+
+// Increase Quantity
+increaseButtons.forEach((btn)=>{
+
+    btn.addEventListener("click",()=>{
+
+        let qty = btn.parentElement.querySelector(".productQty");
+
+        let value = Number(qty.innerHTML);
+
+        value++;
+
+        qty.innerHTML = value;
+
+    });
+
+});
+
+
+
+// Decrease Quantity
+decreaseButtons.forEach((btn)=>{
+
+    btn.addEventListener("click",()=>{
+
+        let qty = btn.parentElement.querySelector(".productQty");
+
+        let value = Number(qty.innerHTML);
+
+
+        if(value > 1){
+
+            value--;
+
+        }
+
+        qty.innerHTML = value;
+
+    });
+
+});
+
+
+
+/*Remove Product
+removeButtons.forEach((btn)=>{
+
+    btn.addEventListener("click",()=>{
+
+        btn.closest(".item").remove();
+
+    });
+
+});*/
+
+</script>
+
+</body>
+</html>
